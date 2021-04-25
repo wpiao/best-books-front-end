@@ -19,6 +19,9 @@ We are building an application that that will give a user the ability to store t
 
 ## Change Log
 04-24-2021 2:30pm PST - Started creating repo and building app
+04-24-2021 3:10pm PST - Finished card 1 within Trello
+04-24-2021 3:45pm PST - Wrapped index.js with Auth0 and incorporated Auth0 into the App component
+
 <!-- Keep up to date with time stamps -->
 
 ## Credit and Collaborations
@@ -33,6 +36,6 @@ Estimate of time needed to complete: 90 minutes
 
 Start time: 2:30pm PST
 
-Finish time: TBD
+Finish time: 5:30pm PST
 
-Actual time needed to complete: TDB
+Actual time needed to complete: 2.5 hours
