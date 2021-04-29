@@ -21,14 +21,14 @@ class App extends React.Component {
       <>
         <Router>
           <IsLoadingAndError>
-            <Header isAuthenticated={isAuthenticated}/>
+            <Header isAuthenticated={isAuthenticated} />
             <Switch>
               <Route exact path="/">
                 {/* TODO: if the user is logged in, render the `MyFavoriteBooks` component, if they are not, render the `Login` component */}
-                {isAuthenticated ? <MyFavoriteBooks /> : <Login />}
+                {isAuthenticated ? <MyFavoriteBooks userInfo={user} /> : <Login />}
               </Route>
               <Route exact path="/profile">
-                {isAuthenticated ? <Profile userInfo={user}/> : ''}
+                {isAuthenticated ? <Profile userInfo={user} /> : ''}
               </Route>
               {/* TODO: add a route with a path of '/profile' that renders a `Profile` component */}
             </Switch>
