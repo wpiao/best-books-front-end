@@ -15,7 +15,7 @@ class BestBooks extends React.Component {
             <Carousel.Item key={book._id}>
               <img
                 className="d-block w-100"
-                src={book.photo}
+                src={book.photo || 'https://via.placeholder.com/150'}
                 alt="First slide"
               />
               <Carousel.Caption>
