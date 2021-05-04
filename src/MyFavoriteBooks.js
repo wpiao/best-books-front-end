@@ -10,8 +10,8 @@ class MyFavoriteBooks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isClicked: false,
-      books: []
+      books: [],
+      show: false
     };
   }
 
@@ -25,18 +25,13 @@ class MyFavoriteBooks extends React.Component {
       .catch(err => console.error(err))
   }
 
-  handleClick = () => {
-    this.setState({
-      isClicked: true
-    });
-  }
-
   addBook = book => {
     axios.post(`${process.env.REACT_APP_BACKEND_URL}/books`, book)
       .then(res => {
         console.log(res.data.books);
         this.setState({
-          books: res.data.books
+          books: res.data.books,
+          show: false
         });
       })
       .catch(err => console.log(err));
@@ -46,10 +41,18 @@ class MyFavoriteBooks extends React.Component {
     axios.delete(`${process.env.REACT_APP_BACKEND_URL}/books/${id}?email=${this.props.userInfo.email}`)
       .then(res => {
         this.setState({
-          books: res.data
+          books: res.data,
         });
       })
       .catch(err => console.log(err));
+  }
+
+  handleShow = () => {
+    this.setState({ show: true });
+  }
+
+  handleClose = () => {
+    this.setState({ show: false });
   }
 
   render() {
@@ -60,8 +63,8 @@ class MyFavoriteBooks extends React.Component {
           <p>
             This is a collection of my favorite books
           </p>
-          <Button onClick={this.handleClick} >Add Book</Button>
-          {this.state.isClicked ? <BookFormModal email={this.props.userInfo.email} addBook={this.addBook} /> : ''}
+          <Button onClick={this.handleShow} >Add Book</Button>
+          <BookFormModal show={this.state.show} handleClose={this.handleClose} handleShow={this.handleShow} email={this.props.userInfo.email} addBook={this.addBook} />
         </Jumbotron>
         <BestBooks deleteBook={this.deleteBook} userInfo={this.props.userInfo} books={this.state.books} />
       </>

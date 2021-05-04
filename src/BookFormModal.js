@@ -33,15 +33,10 @@ class BookFormModal extends React.Component {
     this.props.addBook(book);
   }
 
-  handleClose = () => {
-    this.setState({
-      show: false
-    });
-  }
   render() {
     return (
       <Container>
-        <Modal.Dialog>
+        <Modal show={this.props.show} onHide={this.props.handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Add a book</Modal.Title>
           </Modal.Header>
@@ -71,10 +66,10 @@ class BookFormModal extends React.Component {
           </Modal.Body>
 
           <Modal.Footer>
-            <Button variant="secondary">Close</Button>
+            <Button variant="secondary" onClick={this.props.handleClose} >Close</Button>
             <Button variant="primary" onClick={this.handleSubmit} >Add Book</Button>
           </Modal.Footer>
-        </Modal.Dialog>
+        </Modal>
       </Container>
     );
   }

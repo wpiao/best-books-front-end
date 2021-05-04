@@ -1,5 +1,4 @@
 import React from 'react';
-// import superagent from 'superagent';
 import { Container, Carousel, Button } from 'react-bootstrap';
 
 class BestBooks extends React.Component {
