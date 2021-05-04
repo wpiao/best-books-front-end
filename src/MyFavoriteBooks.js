@@ -35,14 +35,21 @@ class MyFavoriteBooks extends React.Component {
     axios.post(`${process.env.REACT_APP_BACKEND_URL}/books`, book)
       .then(res => {
         console.log(res.data.books);
-        this.setState(res.data.books)
+        this.setState({
+          books: res.data.books
+        });
       })
       .catch(err => console.log(err));
   };
 
   deleteBook = id => {
     axios.delete(`${process.env.REACT_APP_BACKEND_URL}/books/${id}?email=${this.props.userInfo.email}`)
-      .then(res => console.log(res));
+      .then(res => {
+        this.setState({
+          books: res.data
+        });
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
