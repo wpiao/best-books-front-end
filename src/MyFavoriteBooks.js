@@ -11,7 +11,9 @@ class MyFavoriteBooks extends React.Component {
     super(props);
     this.state = {
       books: [],
-      show: false
+      show: false,
+      isUpdating: false,
+      currentBook: {},
     };
   }
 
@@ -47,6 +49,20 @@ class MyFavoriteBooks extends React.Component {
       .catch(err => console.log(err));
   }
 
+  updateBook = book => {
+    axios.put(`${process.env.REACT_APP_BACKEND_URL}/books/${book._id}`, book)
+      .then(res => {
+        console.log(res);
+      })
+  }
+
+  handleUpdate = book => {
+    this.setState({
+      show: true,
+      currentBook: book
+    });
+  }
+
   handleShow = () => {
     this.setState({ show: true });
   }
@@ -64,9 +80,9 @@ class MyFavoriteBooks extends React.Component {
             This is a collection of my favorite books
           </p>
           <Button onClick={this.handleShow} >Add Book</Button>
-          <BookFormModal show={this.state.show} handleClose={this.handleClose} handleShow={this.handleShow} email={this.props.userInfo.email} addBook={this.addBook} />
+          <BookFormModal currentBook={this.state.currentBook} updateBook={this.updateBook} isUpdating={this.state.isUpdating} show={this.state.show} handleClose={this.handleClose} handleShow={this.handleShow} email={this.props.userInfo.email} addBook={this.addBook} />
         </Jumbotron>
-        <BestBooks deleteBook={this.deleteBook} userInfo={this.props.userInfo} books={this.state.books} />
+        <BestBooks handleUpdate={this.handleUpdate} deleteBook={this.deleteBook} userInfo={this.props.userInfo} books={this.state.books} />
       </>
     )
   }
