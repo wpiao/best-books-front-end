@@ -39,3 +39,15 @@ Start time: 2:30pm PST
 Finish time: 5:30pm PST
 
 Actual time needed to complete: 2.5 hours
+
+
+
+Name of feature: Lab: Class 14
+
+Estimate of time needed to complete: 90 minutes
+
+Start time: 8:30pm PST 5/5/2021
+
+Finish time: 9:00pm PST 5/6/2021
+
+Actual time needed to complete: 2 nights
